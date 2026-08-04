@@ -9,12 +9,16 @@ local PlayerKillerSettings = {
 }
 
 while true do
+    print("[CYCLE] Новый цикл запущен!")
+    
+    -- Телепортация при появлении Shop
     local teleported = false
     task.spawn(function()
         while not teleported do
             if Workspace:FindFirstChild("Shop") then
                 local humanoidRootPart = LocalPlayer.Character:WaitForChild("HumanoidRootPart")
                 humanoidRootPart.CFrame = CFrame.new(185, 66, -26)
+                print("[TELEPORT] Игрок телепортирован на регистрацию!")
                 teleported = true
                 break
             end
@@ -45,6 +49,9 @@ while true do
             pcall(function() connection:Fire() end)
         end
         task.wait(1)
+        
+        print("[GUARD] Регистрация завершена!")
+        print("[KILLER] Система киллера интегрирована и работает!")
         
         PlayerKillerSettings.Enabled = true
         
@@ -110,12 +117,16 @@ while true do
                     end
                     
                     if anchorExists and not anchorDetected then
+                        print("[ANCHOR] Anchor обнаружен!")
                         anchorDetected = true
                     elseif not anchorExists and anchorDetected then
                         disappearCount = disappearCount + 1
+                        print("[ANCHOR] Anchor исчез! (раз: " .. disappearCount .. ")")
                         anchorDetected = false
                         
                         if disappearCount == 2 then
+                            print("[ANCHOR] Второе исчезновение! Убиваем игрока")
+                            
                             local humanoid = LocalPlayer.Character:FindFirstChild("Humanoid")
                             if humanoid then
                                 humanoid.Health = 0
@@ -128,6 +139,7 @@ while true do
                                 for _, connection in pairs(getconnections(button.MouseButton1Click)) do
                                     connection:Fire()
                                 end
+                                print("[LOBBY] ReturnLobby нажата!")
                             end
                             
                             PlayerKillerSettings.Enabled = false
@@ -139,7 +151,9 @@ while true do
             end
         end)
         
+        -- Ждем пока игрок вернется в лобби
         task.wait(3)
+        print("[CYCLE] Ожидание возврата в лобби...")
     end
     
     task.wait(5)
