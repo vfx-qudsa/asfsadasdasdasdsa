@@ -15,7 +15,7 @@ local PlayerKillerSettings = {
 }
 
 
-while true do
+while _G.AutofarmRunning do
 
     local teleported = false
     task.spawn(function()
