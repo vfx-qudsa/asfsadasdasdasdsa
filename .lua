@@ -1,7 +1,3 @@
-if not _G.AutofarmRunning then
-    return
-end
-
 queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/vfx-qudsa/asfsadasdasdasdsa/refs/heads/main/.lua'))()")
 
 local LocalPlayer = game:GetService("Players").LocalPlayer
